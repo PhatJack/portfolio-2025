@@ -1,0 +1,190 @@
+---
+import { Icon } from "astro-icon/components";
+import LightDarkSwitch from "../LightDarkSwitch.astro";
+
+const menu = [
+  {
+    name: "Home",
+    link: "/",
+    target: "_self",
+  },
+  {
+    name: "About",
+    link: "/about",
+    target: "_self",
+  },
+  {
+    name: "Archive",
+    link: "/archive",
+    target: "_self",
+  },
+  {
+    name: "Github",
+    link: "https://github.com/PhatJack",
+    target: "_blank",
+  },
+];
+---
+
+<header
+  id="header"
+  transition:persist="true"
+  class="fixed top-0 w-full z-[999] flex justify-center items-center transition-all px-2"
+>
+  <div
+    class="w-full bg-white dark:bg-black rounded-br-2xl rounded-bl-2xl px-4 max-w-[75rem] mx-auto relative z-50"
+  >
+    <nav id="nav" class="w-full flex justify-between items-center h-[4.5rem] relative z-50">
+      <a href="/" class="flex gap-1.5 items-center btn-plain text-pink-400">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-house"
+          ><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path
+            d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+          ></path></svg
+        >
+        <span class="font-bold inline-block h-full pt-0.5"> Jack Phat </span>
+      </a>
+      <ul class="hidden sm:flex gap-2 list-none">
+        {
+          menu.map((item) => (
+            <li>
+              <a
+                href={item.link}
+                target={item.target}
+                class="btn-plain text-black dark:text-pink-400 font-bold flex items-center gap-0.5"
+              >
+                <span class="inline-block pt-0.5">{item.name}</span>
+                {item.name == "Github" && (
+                  <span class="inline-block">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-external-link size-4 text-gray-300"
+                    >
+                      <path d="M15 3h6v6" />
+                      <path d="M10 14 21 3" />
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    </svg>
+                  </span>
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex gap-2">
+        <LightDarkSwitch />
+        <button
+          title="toggle menu"
+          id="toggle-menu"
+          class="sm:hidden flex btn-plain border-none bg-transparent justify-center items-center cursor-pointer size-12"
+          type="button"
+        >
+          <Icon name="fa6-solid:list-ul" class="dark:text-white text-lg" />
+        </button>
+      </div>
+      <ul
+        id="mobile-menu"
+        class="mobile-menu absolute sm:hidden flex flex-col gap-2 top-[5rem] left-0 h-fit w-full bg-white dark:bg-black rounded-2xl overflow-hidden shadow-lg"
+      >
+        {
+          menu.map((item) => (
+            <li>
+              <a
+                href={item.link}
+                target={item.target}
+                class="btn-plain text-black dark:text-white font-bold flex items-center gap-0.5 !rounded-none"
+              >
+                <span class="inline-block pt-0.5 text-black dark:text-white">{item.name}</span>
+                {item.name == "Github" && (
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-external-link size-4 text-gray-300"
+                    >
+                      <path d="M15 3h6v6" />
+                      <path d="M10 14 21 3" />
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    </svg>
+                  </span>
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+<style>
+  .mobile-menu {
+    transform: translateX(-150%);
+    opacity: 0;
+    transition:
+      transform 0.5s,
+      opacity 0.5s;
+  }
+  .mobile-menu.is-active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+  function initHeader() {
+    const header = document.getElementById("header");
+    const toggle = document.getElementById("toggle-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+    toggle?.addEventListener("click", () => {
+      toggle.classList.toggle("bg-pink-100");
+      toggle.classList.toggle("text-pink-400");
+      mobileMenu?.classList.toggle("is-active");
+    });
+
+    let lastScrollTop = 0;
+    const scrollHandler = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      if (header) {
+        if (scrollTop > lastScrollTop) {
+          header.style.transform = "translateY(-100%)";
+        } else {
+          header.style.transform = "translateY(0)";
+        }
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    };
+    window.addEventListener("scroll", scrollHandler);
+    console.log("init");
+    document.addEventListener("astro:before-swap", () => {
+      document.removeEventListener("scroll", scrollHandler);
+    });
+  }
+
+  initHeader();
+  document.addEventListener("astro:after-swap", initHeader);
+</script>

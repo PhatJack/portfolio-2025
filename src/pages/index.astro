@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectItem from "../components/project/projectItem.astro";
+import { getCollection } from "astro:content";
+
+const allProjectPosts = await getCollection("projects");
+---
+
+<Layout>
+  <div class="w-full flex flex-col gap-4">
+    <div
+      id="projects"
+      class="w-full flex flex-col gap-4 md:bg-transparent bg-white dark:bg-black rounded-2xl md:p-0 p-3 md:divide-y-0 divide-y divide-dashed divide-x-0"
+    >
+      {allProjectPosts.map((item, _) => <ProjectItem {...item.data} />)}
+    </div>
+  </div>
+</Layout>

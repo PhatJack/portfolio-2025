@@ -1,0 +1,34 @@
+ function initCustomScrollbar() {
+    const bodyElement = document.querySelector("body");
+    if (!bodyElement) return;
+    OverlayScrollbars(
+      // docs say that a initialization to the body element would affect native functionality like window.scrollTo
+      // but just leave it here for now
+      {
+        target: bodyElement,
+        cancel: {
+          nativeScrollbarsOverlaid: true, // don't initialize the overlay scrollbar if there is a native one
+        },
+      },
+      {
+        scrollbars: {
+          theme: "scrollbar-base scrollbar-auto py-1",
+          autoHide: "move",
+          autoHideDelay: 500,
+          autoHideSuspend: false,
+        },
+      }
+    );
+    document.querySelectorAll("pre").forEach((ele) => {
+      OverlayScrollbars(ele, {
+        scrollbars: {
+          theme: "scrollbar-base scrollbar-dark px-2",
+          autoHide: "leave",
+          autoHideDelay: 500,
+          autoHideSuspend: false,
+        },
+      });
+    });
+  }
+
+  // initCustomScrollbar();

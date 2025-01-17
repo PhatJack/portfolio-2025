@@ -1,0 +1,23 @@
+---
+import Row from "@/components/about/row.astro";
+import Layout from "@/layouts/Layout.astro";
+import { archiveData } from "../config";
+import TimeLineItem from "@/components/archive/timeLineItem.astro";
+
+
+---
+
+<Layout title="Achrive">
+  <div class="w-full h-full p-3 bg-white dark:bg-black rounded-2xl sm:p-10 overflow-hidden">
+    <Row title="Archive" id="archive" href="#archive">
+      <div class="w-full h-fit relative flex flex-col space-y-6 overflow-hidden">
+        <div class="absolute left-3.5 top-10 w-1 rounded-lg h-full bg-pink-300 dark:bg-pink-800"></div>
+        <div class="w-fit rounded-full py-1 px-2 bg-pink-100 dark:bg-pink-400 flex items-center gap-2 relative z-10">
+          <div class="size-4 rounded-full bg-pink-400 dark:bg-pink-800"></div>
+          <span class="font-semibold">My Journey</span>
+        </div>
+        {archiveData.map((item, _) => <TimeLineItem {...item} />)}
+      </div>
+    </Row>
+  </div>
+</Layout>

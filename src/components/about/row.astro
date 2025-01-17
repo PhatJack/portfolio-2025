@@ -1,0 +1,24 @@
+---
+interface RowProps {
+  title: string;
+  href: string;
+  id: string;
+}
+const { title, id, href } = Astro.props as RowProps;
+---
+
+<div class="flex flex-col gap-4 w-full">
+  <h1 id={id} class="text-3xl font-bold transition-all rounded-md group">
+    <span class="w-1 h-full rounded-md border-2 border-solid border-pink-400"></span>
+    <a href={href} class="ml-4">
+			<span class="text-black dark:text-white">
+				{title}
+			</span>
+      <span
+        class="opacity-0 transition-opacity group-hover:opacity-100 text-pink-400 px-2.5 py-0.5 inline-block rounded-md hover:bg-pink-100"
+        >#</span
+      >
+    </a>
+  </h1>
+  <slot />
+</div>

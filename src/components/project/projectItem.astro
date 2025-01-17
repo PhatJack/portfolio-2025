@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  title: string;
+  date: string;
+  members: number;
+  description: string;
+  tags: string[];
+  slug: string;
+  altText?: string;
+  image?: string;
+}
+
+const { title, date, members, description, tags, slug, altText, image } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{jpeg,jpg,png,gif,webp}",
+);
+if (image && !images[image])
+  throw new Error(`"${image}" does not exist in glob: "src/assets/**/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<div class="w-full flex items-center">
+  <div
+    class="w-full flex md:flex-row flex-col gap-3 bg-white dark:bg-black rounded-2xl md:pl-9 py-3 md:py-6 md:pr-3 relative"
+  >
+    <div
+      class="w-full md:w-[calc(100%-270px-0.75rem)] h-full flex flex-col gap-3 md:order-1 order-2"
+    >
+      <a
+        href={`/projects/${slug}`}
+        class="w-full flex items-center gap-4 group relative cursor-pointer dark:text-white"
+      >
+        <span class="hidden md:inline-block absolute -left-4 h-7 w-1 rounded-md bg-pink-400"></span>
+        <span class="text-3xl font-semibold group-hover:text-pink-400 transition-all">
+          {title}
+        </span>
+        <span
+          class="opacity-100 md:opacity-0 -translate-x-0 md:-translate-x-3 group-hover:opacity-100 group-hover:-translate-x-0 transition-all text-lg text-pink-400"
+        >
+          <Icon name={"fa6-solid:chevron-right"} />
+        </span>
+      </a>
+      <div class="flex gap-4">
+        <div class="flex items-center gap-2">
+          <span class="size-10 rounded-md bg-pink-100 flex justify-center items-center">
+            <Icon name={"fa6-regular:clock"} class={"text-xl text-pink-400"} />
+          </span>
+          <span class="text-gray-500/80 dark:text-gray-300 font-semibold text-sm">{date}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="size-10 rounded-md bg-pink-100 flex justify-center items-center">
+            <Icon name={"fa6-solid:people-group"} class={"text-xl text-pink-400"} />
+          </span>
+          <span class="text-gray-500/80 dark:text-gray-300 font-semibold text-sm">{members} members</span>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-gray-300 text-pretty truncate w-full leading-relaxed">
+        {description}
+      </p>
+      <div class="flex flex-wrap items-center gap-2">
+        {
+          tags.map((tag) => (
+            <span class="font-semibold text-sm px-2 py-1 bg-pink-100 text-pink-400 rounded-md transition-all hover:bg-pink-200 cursor-pointer">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    {
+      image ? (
+        <div class="md:w-[30%] h-[250px] md:h-[calc(100%-1.5rem)] relative md:absolute md:right-3 md:top-3 rounded-xl overflow-hidden transition-all border">
+          <a href={`/projects/${slug}`} class="size-full relative inline-block group">
+            <Image
+              src={images[image]()}
+              alt={altText ?? "Image"}
+              class="size-full aspect-video object-fill"
+            />
+            <div class="absolute inset-0 size-full flex justify-center items-center bg-black/40 transition-all opacity-0 group-hover:opacity-100">
+              <Icon name={"fa6-solid:chevron-right"} class="text-white text-xl" />
+            </div>
+          </a>
+        </div>
+      ) : (
+        <a
+          href={`/projects/${slug}`}
+          class="hidden absolute right-3 top-3 w-12 h-[calc(100%-1.5rem)] rounded-md bg-pink-100 md:flex justify-center items-center hover:bg-pink-200 transition-all"
+        >
+          <Icon name={"fa6-solid:chevron-right"} class="text-pink-400 text-lg" />
+        </a>
+      )
+    }
+  </div>
+</div>

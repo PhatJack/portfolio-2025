@@ -1,0 +1,136 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/includes/header.astro";
+import "../styles/main.css";
+import "../styles/scrollbar.css";
+import Sidebar from "../components/includes/sidebar.astro";
+import Footer from "../components/includes/footer.astro";
+import "aos/dist/aos.css";
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Home", description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+    <title>{title} | Nguyen Tien Phat</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="mx-auto bg-[#fff8f0] dark:bg-[#131313] transition-all relative">
+    <Header />
+    <div id="bg-img" class="bg-hero bg-no-repeat bg-bottom bg-cover h-[600px] transition-all"></div>
+    <div class="absolute top-[40vh] sm:top-[58vh] w-full h-full px-2">
+      <div class="max-w-[75rem] mx-auto pb-6">
+        <div class="w-full grid lg:grid-cols-4 gap-4 relative">
+          <Sidebar />
+          <div class="w-full lg:col-span-3 flex flex-col">
+            <slot />
+            <Footer />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:
+      "Roboto",
+      sans-serif,
+      ui-sans-serif,
+      system-ui,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      Segoe UI Symbol,
+      "Noto Color Emoji";
+    scroll-behavior: smooth;
+  }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+<script>
+  import AOS from "aos";
+  import "overlayscrollbars/overlayscrollbars.css";
+  import { OverlayScrollbars } from "overlayscrollbars";
+  AOS.init();
+  function initCustomScrollbar() {
+    const bodyElement = document.querySelector("body");
+    if (!bodyElement) return;
+    OverlayScrollbars(
+      // docs say that a initialization to the body element would affect native functionality like window.scrollTo
+      // but just leave it here for now
+      {
+        target: bodyElement,
+        cancel: {
+          nativeScrollbarsOverlaid: true, // don't initialize the overlay scrollbar if there is a native one
+        },
+      },
+      {
+        scrollbars: {
+          theme: "scrollbar-base scrollbar-auto py-1",
+          autoHide: "move",
+          autoHideDelay: 500,
+          autoHideSuspend: false,
+        },
+      },
+    );
+    document.querySelectorAll("pre").forEach((ele) => {
+      OverlayScrollbars(ele, {
+        scrollbars: {
+          theme: "scrollbar-base scrollbar-dark px-2",
+          autoHide: "leave",
+          autoHideDelay: 500,
+          autoHideSuspend: false,
+        },
+      });
+    });
+  }
+
+  initCustomScrollbar();
+  document.addEventListener("astro:after-swap", () => {
+    AOS.refresh();
+    initCustomScrollbar();
+  });
+</script>

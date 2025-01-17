@@ -1,0 +1,123 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<button
+  aria-label="Theme Switch"
+  role="button"
+  type="button"
+  class:list={[
+    "relative btn-plain scale-animation size-12 rounded-lg border-none bg-transparent cursor-pointer dark:hover:text-black",
+    className,
+  ]}
+  id="theme-switch"
+>
+  <span class="sr-only">Toggle theme</span>
+  <div class="icon-container absolute inset-0 flex items-center justify-center">
+    <Icon name="fa6-regular:sun" class="theme-icon sun-icon text-lg text-black dark:text-white" />
+    <Icon name="fa6-regular:moon" class="theme-icon moon-icon text-lg text-black dark:text-white" />
+    <Icon name="fa6-regular:star-half-stroke" class="theme-icon auto-icon text-lg text-black dark:text-white" />
+  </div>
+</button>
+
+<style>
+  .theme-icon {
+    @apply absolute opacity-0 transition-opacity duration-300;
+  }
+  
+  :global([data-theme="light"]) .sun-icon {
+    @apply opacity-100;
+  }
+  
+  :global([data-theme="dark"]) .moon-icon {
+    @apply opacity-100;
+  }
+  
+  :global([data-theme="auto"]) .auto-icon {
+    @apply opacity-100;
+  }
+</style>
+
+<script>
+  const THEMES = {
+    LIGHT: "light",
+    DARK: "dark",
+    AUTO: "auto",
+  } as const;
+
+  type Theme = typeof THEMES[keyof typeof THEMES];
+  
+  class ThemeManager {
+    private button: HTMLButtonElement | null;
+    private html: HTMLElement;
+    private currentTheme: Theme;
+    
+    constructor() {
+      this.button = document.getElementById("theme-switch") as HTMLButtonElement;
+      this.html = document.documentElement;
+      this.currentTheme = this.getSavedTheme();
+      
+      this.initialize();
+    }
+    
+    private getSavedTheme(): Theme {
+      return (localStorage.getItem("theme") as Theme) || THEMES.AUTO;
+    }
+    
+    private getSystemTheme(): Theme {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? THEMES.DARK
+        : THEMES.LIGHT;
+    }
+    
+    private setTheme(theme: Theme) {
+      this.currentTheme = theme;
+      this.html.setAttribute("data-theme", theme);
+      
+      const effectiveTheme = theme === THEMES.AUTO
+        ? this.getSystemTheme()
+        : theme;
+      
+      this.html.classList.toggle("dark", effectiveTheme === THEMES.DARK);
+      localStorage.setItem("theme", theme);
+    }
+    
+    private handleClick = () => {
+      const themeOrder: Theme[] = [THEMES.LIGHT, THEMES.DARK, THEMES.AUTO];
+      const currentIndex = themeOrder.indexOf(this.currentTheme);
+      const nextTheme = themeOrder[(currentIndex + 1) % themeOrder.length];
+      this.setTheme(nextTheme);
+    };
+    
+    private handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      if (this.currentTheme === THEMES.AUTO) {
+        this.html.classList.toggle("dark", e.matches);
+      }
+    };
+    
+    private initialize() {
+      // Apply initial theme
+      this.setTheme(this.currentTheme);
+      
+      // Add event listeners
+      this.button?.addEventListener("click", this.handleClick);
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", this.handleSystemThemeChange);
+    }
+  }
+  
+  // Initialize theme manager when the DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    new ThemeManager();
+  });
+	document.addEventListener("astro:after-swap", () => {
+    new ThemeManager();
+  });
+</script>

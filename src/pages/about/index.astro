@@ -1,0 +1,43 @@
+---
+import { Icon } from "astro-icon/components";
+import { skills } from "../config";
+import Layout from "@/layouts/Layout.astro";
+import Row from "@/components/about/row.astro";
+import IconBadge from "@/components/IconBadge.astro";
+---
+
+<Layout title="About">
+  <div class="w-full h-full rounded-2xl bg-white dark:bg-black p-3 sm:p-10 flex flex-col gap-6">
+    <Row title="About" id="about" href="#about">
+      <p class="text-gray-600 dark:text-gray-400 text-pretty leading-[1.75] text-lg">
+        I'm a front-end developer with 6 months of experience. I'm passionate about building
+        beautiful and user-friendly websites. I'm also a self-taught developer who loves to learn
+        new things.My short-term objective is to become a software engineer within the next three
+        years, and my long-term goal is to become an expert project manager.
+      </p>
+    </Row>
+    <Row title="Skills" id="skills" href="#skills">
+      <div class="pl-2 flex flex-col space-y-6">
+        {
+          skills.map((skill, _) => (
+            <div class="flex flex-col space-y-4">
+              <h2 class="text-lg text-gray-600 dark:text-gray-400">{skill.title}</h2>
+              <div class="flex flex-wrap gap-2">
+                {skill.skills.map((item, _) => (
+                  <IconBadge item={item} toolTipText={item.split(":")[1]} />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </Row>
+    <Row title="Hobbies" id="hobbies" href="#hobbies">
+      <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 text-pretty leading-relaxed text-lg">
+				<li>Playing game</li>
+				<li>Listening to music</li>
+				<li>Learning new things</li>
+			</ul>
+    </Row>
+  </div>
+</Layout>

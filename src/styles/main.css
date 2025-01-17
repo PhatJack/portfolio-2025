@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+	a {
+		@apply no-underline text-black;
+	}
+}
+
+@layer components {
+  .btn-plain {
+    @apply p-3 rounded-lg hover:bg-pink-100 hover:text-pink-400 transition-all active:scale-95 dark:hover:bg-pink-800 dark:hover:text-white;
+  }
+  .highlight-text {
+    @apply text-pink-400 font-bold;
+  }
+}

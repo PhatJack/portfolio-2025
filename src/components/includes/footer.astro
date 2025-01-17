@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="w-full">
+  <div class="mx-32 border border-dashed border-gray-400 my-10"></div>
+	<div class="w-full flex justify-end mb-4">
+		<button type="button" onclick="window.scrollTo({top: 0,behavior: `smooth`})" class="px-4 py-2 border border-solid border-pink-500 rounded-lg flex justify-center items-center gap-2 bg-transparent hover:bg-pink-400 hover:text-white transition-all text-pink-400">
+			<span>Scroll to top</span>
+			<Icon name={"fa6-solid:chevron-up"} class="text-lg" />
+		</button>
+	</div>
+  <div class="w-full flex flex-col gap-1.5 justify-center items-center dark:text-white">
+    <p class="text-center text-balance">
+      © Copyright @ 2025. All Rights Reserved by <a
+        class="highlight-text hover:bg-pink-100 p-1 rounded-md"
+        href="#">Jack Phat</a
+      >
+    </p>
+    <p class="text-center text-balance">
+      Powered by <a
+        target="_blank"
+        class="highlight-text hover:bg-pink-100 p-1 rounded-md"
+        href="https://astro.build/">Astro</a
+      > & Inspried by <a
+        target="_blank"
+        class="highlight-text hover:bg-pink-100 p-1 rounded-md"
+        href="https://github.com/saicaca/fuwari">Fuwari</a
+      >
+    </p>
+  </div>
+</footer>
