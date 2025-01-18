@@ -32,7 +32,7 @@ const menu = [
   class="fixed top-0 w-full z-[999] flex justify-center items-center transition-all px-2"
 >
   <div
-    class="w-full bg-white dark:bg-black rounded-br-2xl rounded-bl-2xl px-4 max-w-[75rem] mx-auto relative z-50"
+    class="w-full bg-white dark:bg-dark rounded-br-2xl rounded-bl-2xl px-4 max-w-[75rem] mx-auto relative z-50"
   >
     <nav id="nav" class="w-full flex justify-between items-center h-[4.5rem] relative z-50">
       <a href="/" class="flex gap-1.5 items-center btn-plain text-pink-400">
@@ -60,7 +60,7 @@ const menu = [
               <a
                 href={item.link}
                 target={item.target}
-                class="btn-plain text-black dark:text-pink-400 font-bold flex items-center gap-0.5"
+                class="btn-plain text-dark dark:text-pink-400 font-bold flex items-center gap-0.5"
               >
                 <span class="inline-block pt-0.5">{item.name}</span>
                 {item.name == "Github" && (
@@ -101,7 +101,7 @@ const menu = [
       </div>
       <ul
         id="mobile-menu"
-        class="mobile-menu absolute sm:hidden flex flex-col gap-2 top-[5rem] left-0 h-fit w-full bg-white dark:bg-black rounded-2xl overflow-hidden shadow-lg"
+        class="mobile-menu absolute sm:hidden flex flex-col gap-2 top-[5rem] left-0 h-fit w-full bg-white dark:bg-dark rounded-2xl overflow-hidden shadow-lg"
       >
         {
           menu.map((item) => (
@@ -109,9 +109,9 @@ const menu = [
               <a
                 href={item.link}
                 target={item.target}
-                class="btn-plain text-black dark:text-white font-bold flex items-center gap-0.5 !rounded-none"
+                class="btn-plain text-dark dark:text-white font-bold flex items-center gap-0.5 !rounded-none"
               >
-                <span class="inline-block pt-0.5 text-black dark:text-white">{item.name}</span>
+                <span class="inline-block pt-0.5 text-dark dark:text-white">{item.name}</span>
                 {item.name == "Github" && (
                   <span>
                     <svg
@@ -179,7 +179,6 @@ const menu = [
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     };
     window.addEventListener("scroll", scrollHandler);
-    console.log("init");
     document.addEventListener("astro:before-swap", () => {
       document.removeEventListener("scroll", scrollHandler);
     });
