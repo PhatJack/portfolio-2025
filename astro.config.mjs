@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 
@@ -10,14 +10,15 @@ import { remarkReadingTime } from "./remark-reading.time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind({
-
-	}), icon(), mdx()],
+	integrations: [tailwind(), icon(), mdx()],
+	image: {
+		service: passthroughImageService()
+	},
 	devToolbar: {
 		enabled: false,
 	},
 	markdown: {
 		remarkPlugins:
 			[remarkReadingTime],
-	}
+	},
 });
