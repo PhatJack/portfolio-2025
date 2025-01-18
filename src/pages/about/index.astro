@@ -1,13 +1,13 @@
 ---
-import { Icon } from "astro-icon/components";
 import { skills } from "../config";
 import Layout from "@/layouts/Layout.astro";
 import Row from "@/components/about/row.astro";
 import IconBadge from "@/components/IconBadge.astro";
+import { fade } from "astro:transitions";
 ---
 
 <Layout title="About">
-  <div class="w-full h-full rounded-2xl bg-white dark:bg-black p-3 sm:p-10 flex flex-col gap-6">
+  <div transition:animate={fade({duration: '0.3s'})} class="w-full h-full rounded-2xl bg-white dark:bg-black p-3 sm:p-10 flex flex-col gap-6">
     <Row title="About" id="about" href="#about">
       <p class="text-gray-600 dark:text-gray-400 text-pretty leading-[1.75] text-lg">
         I'm a front-end developer with 6 months of experience. I'm passionate about building
