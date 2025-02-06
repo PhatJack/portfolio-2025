@@ -33,16 +33,12 @@
     --os-handle-bg-hover: rgba(0, 0, 0, 0.5);
     --os-handle-bg-active: rgba(0, 0, 0, 0.6);
   }
+}
 
-  &.scrollbar-dark {
-    --os-handle-bg: rgba(255, 255, 255, 0.4);
-    --os-handle-bg-hover: rgba(255, 255, 255, 0.5);
-    --os-handle-bg-active: rgba(255, 255, 255, 0.6);
-  }
-
-  &.scrollbar-light {
-    --os-handle-bg: rgba(0, 0, 0, 0.4);
-    --os-handle-bg-hover: rgba(0, 0, 0, 0.5);
-    --os-handle-bg-active: rgba(0, 0, 0, 0.6);
-  }
+.dark .os-scrollbar {
+	&.scrollbar-auto {
+		--os-handle-bg: rgba(255, 255, 255, 0.4);
+		--os-handle-bg-hover: rgba(255, 255, 255, 0.5);
+		--os-handle-bg-active: rgba(255, 255, 255, 0.6);
+	}
 }

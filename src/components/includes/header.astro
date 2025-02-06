@@ -153,17 +153,26 @@ const menu = [
     opacity: 1;
   }
 </style>
-
-<script is:inline>
+<script>
   function initHeader() {
     const header = document.getElementById("header");
     const toggle = document.getElementById("toggle-menu");
     const mobileMenu = document.getElementById("mobile-menu");
-    toggle?.addEventListener("click", () => {
-      toggle.classList.toggle("bg-pink-100");
-      toggle.classList.toggle("text-pink-400");
+
+    // Function to close the mobile menu
+    const closeMobileMenu = () => {
+      mobileMenu?.classList.remove("is-active");
+      toggle?.classList.remove("bg-pink-100", "text-pink-400");
+    };
+
+    const openMobileMenu = () => {
+      console.log("click");
+      toggle?.classList.toggle("bg-pink-100");
+      toggle?.classList.toggle("text-pink-400");
       mobileMenu?.classList.toggle("is-active");
-    });
+    };
+
+    toggle?.addEventListener("click",openMobileMenu);
 
     let lastScrollTop = 0;
     const scrollHandler = () => {
@@ -178,8 +187,13 @@ const menu = [
 
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     };
+
     window.addEventListener("scroll", scrollHandler);
+
+    // Close the mobile menu before the page swaps
     document.addEventListener("astro:before-swap", () => {
+      closeMobileMenu();
+      toggle?.removeEventListener("click",openMobileMenu);
       document.removeEventListener("scroll", scrollHandler);
     });
   }
