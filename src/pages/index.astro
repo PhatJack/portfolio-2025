@@ -10,7 +10,7 @@ const allProjectPosts = await getCollection("projects");
   <div class="w-full flex flex-col gap-4">
     <div
       id="projects"
-      class="w-full flex flex-col gap-4 md:bg-transparent dark:bg-dark dark:md:bg-transparent rounded-2xl md:p-0 p-3 md:divide-y-0 divide-y divide-dashed divide-x-0"
+      class="w-full flex flex-col gap-3 md:bg-transparent bg-white dark:bg-dark dark:md:bg-transparent rounded-2xl md:p-0 p-3 md:divide-y-0 divide-y divide-dashed divide-x-0 divide-gray-300"
     >
       {allProjectPosts.map((item, index) => <ProjectItem data- {...item.data} />)}
     </div>
