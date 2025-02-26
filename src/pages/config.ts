@@ -79,7 +79,7 @@ interface archiveDataProps {
 export const archiveData: archiveDataProps[] = [
   {
     timeLineTitle: "Front-end Developer",
-    timePeriod: "Dec 2024 - Present",
+    timePeriod: "Dec 2024 - January 2025",
     listDocs: [
       {
         title: "Company",
