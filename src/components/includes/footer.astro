@@ -14,7 +14,7 @@ const year = new Date().getFullYear()
 	</div>
   <div class="w-full flex flex-col gap-1.5 justify-center items-center dark:text-white">
     <p class="text-center text-balance">
-      © Copyright @ {year}. All Rights Reserved by <a
+      © Copyright @ <span id="footer-year">{year}</span>. All Rights Reserved by <a
         class="highlight-text hover:bg-pink-100 p-1 rounded-md"
         href="#">Jack Phat</a
       >
@@ -32,3 +32,7 @@ const year = new Date().getFullYear()
     </p>
   </div>
 </footer>
+
+<script is:inline>
+  document.getElementById("footer-year").innerText = new Date().getFullYear();
+</script>

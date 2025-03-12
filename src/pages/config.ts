@@ -77,9 +77,29 @@ interface archiveDataProps {
 }
 
 export const archiveData: archiveDataProps[] = [
+	{
+    timeLineTitle: "Intern Front-end Developer",
+    timePeriod: "March 2025 - Present",
+    listDocs: [
+      {
+        title: "Company",
+        content: "One Medic",
+      },
+      {
+        title: "Position",
+        content: "Frontend Developer",
+      },
+      {
+        title: "Location",
+        content: "Onsite",
+      },
+    ],
+    image: "/src/assets/company/onemedic.png",
+    imageLink: "https://onemedic.vn/vi",
+  },
   {
-    timeLineTitle: "Front-end Developer",
-    timePeriod: "Dec 2024 - January 2025",
+    timeLineTitle: "Intern Front-end Developer",
+    timePeriod: "Dec 2024 - February 2025",
     listDocs: [
       {
         title: "Company",
