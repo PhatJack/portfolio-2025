@@ -25,6 +25,15 @@ export const skills: skillsProps[] = [
       "simple-icons:redux",
       "simple-icons:reactquery",
       "simple-icons:reacthookform",
+      "simple-icons:nestjs",
+      "simple-icons:prisma",
+    ],
+  },
+  {
+    title: "Database",
+    skills: [
+      "simple-icons:mysql",
+      "simple-icons:postgresql",
     ],
   },
   {
@@ -77,7 +86,7 @@ interface archiveDataProps {
 }
 
 export const archiveData: archiveDataProps[] = [
-	{
+  {
     timeLineTitle: "Intern Front-end Developer",
     timePeriod: "March 2025 - Present",
     listDocs: [

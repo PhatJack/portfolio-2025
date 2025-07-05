@@ -6,7 +6,6 @@ import "../styles/theme.css";
 import "../styles/scrollbar.css";
 import Sidebar from "../components/includes/sidebar.astro";
 import Footer from "../components/includes/footer.astro";
-import ThemeColorPicker from "../components/ThemeColorPicker.astro";
 import "aos/dist/aos.css";
 interface Props {
   title?: string;
@@ -31,7 +30,7 @@ const { title = "Home", description } = Astro.props;
     <title>{title} | Nguyen Tien Phat</title>
     <meta name="description" content={description} />
   </head>
-  <body class="mx-auto bg-[#fff8f0] dark:bg-black transition-all relative">
+  <body class="mx-auto bg-[#F0F8FF] dark:bg-black transition-all relative">
     <Header />
     <div id="bg-img" class="bg-hero bg-no-repeat bg-bottom bg-cover h-[600px] transition-all"></div>
     <div class="absolute top-[40vh] sm:top-[58vh] w-full h-full px-2">
