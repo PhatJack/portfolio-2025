@@ -11,14 +11,14 @@ const { item, toolTipText, classname } = Astro.props as IconBadgeProps;
 
 <div
   class:list={[
-    "size-12 p-2 rounded-md bg-pink-100 text-pink-400 cursor-pointer relative group",
+    "size-12 p-2 rounded-md bg-theme-100 text-theme-400 cursor-pointer relative group",
     classname,
   ]}
 >
   <Icon name={item} class="size-full" />
   {
     toolTipText && (
-      <div class="absolute -top-10 left-1/2 -translate-x-1/2 uppercase font-medium w-fit bg-pink-400 pointer-events-none duration-300 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 px-2 py-1 rounded-md text-white transition-all">
+      <div class="absolute -top-10 left-1/2 -translate-x-1/2 uppercase font-medium w-fit bg-theme-400 pointer-events-none duration-300 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 px-2 py-1 rounded-md text-white transition-all">
         {toolTipText}
       </div>
     )

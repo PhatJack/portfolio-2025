@@ -48,7 +48,7 @@ const { Content, remarkPluginFrontmatter } = await render(project);
     <div class="w-full flex flex-wrap gap-4">
       <div class="flex items-center text-gray-400 gap-2">
         <span
-          class="size-10 rounded-md flex justify-center items-center bg-pink-100 dark:bg-pink-400 text-pink-400 dark:text-pink-100 text-lg p-1"
+          class="size-10 rounded-md flex justify-center items-center bg-theme-100 dark:bg-theme-400 text-theme-400 dark:text-theme-100 text-lg p-1"
         >
           <Icon name="fa6-solid:calendar" />
         </span>
@@ -56,7 +56,7 @@ const { Content, remarkPluginFrontmatter } = await render(project);
       </div>
       <div class="flex items-center text-gray-400 gap-2">
         <span
-          class="size-10 rounded-md flex justify-center items-center bg-pink-100 dark:bg-pink-400 text-pink-400 dark:text-pink-100 text-lg p-1"
+          class="size-10 rounded-md flex justify-center items-center bg-theme-100 dark:bg-theme-400 text-theme-400 dark:text-theme-100 text-lg p-1"
         >
           <Icon name="fa6-solid:tags" />
         </span>
@@ -64,7 +64,7 @@ const { Content, remarkPluginFrontmatter } = await render(project);
           {
             project.data.tags.map((tag, index) => (
               <>
-                <span class="font-semibold text-sm px-2 py-1 rounded-md transition-all text-gray-400 hover:text-white hover:bg-pink-400 cursor-pointer">
+                <span class="font-semibold text-sm px-2 py-1 rounded-md transition-all text-gray-400 hover:text-white hover:bg-theme-400 cursor-pointer">
                   {tag}
                 </span>
                 {index < project.data.tags.length - 1 && <span class="text-gray-400"> / </span>}
