@@ -1,0 +1,264 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div
+  id="theme-color-picker"
+  class="float-panel float-panel-closed absolute transition-all w-80 right-0 top-[105%] px-4 py-4 z-50"
+>
+  <div class="flex flex-row gap-2 mb-3 items-center justify-between">
+    <div
+      class="flex items-center gap-2 font-bold text-lg text-gray-900 dark:text-gray-100 transition relative ml-3
+            before:w-1 before:h-4 before:rounded-md before:bg-pink-400
+            before:absolute before:-left-3 before:top-[0.33rem]"
+    >
+      <Icon name="fa6-solid:palette" class="text-pink-400 text-lg mr-1" />
+      Theme Color
+      <button
+        aria-label="Reset to Default"
+        class="btn-regular w-7 h-7 rounded-md active:scale-90 transition-all"
+        id="reset-hue-btn"
+      >
+        <Icon name="fa6-solid:arrow-rotate-left" class="text-sm" />
+      </button>
+    </div>
+    <div class="flex gap-1">
+      <div
+        id="hue-value"
+        class="transition bg-pink-100 dark:bg-pink-400 w-10 h-7 rounded-md flex justify-center
+            font-bold text-sm items-center text-pink-600 dark:text-pink-100"
+      >
+        330
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full h-6 px-1 rainbow-gradient rounded select-none">
+    <input
+      aria-label="Theme Color"
+      type="range"
+      min="0"
+      max="360"
+      value="330"
+      class="color-slider w-full h-6"
+      id="color-slider"
+      step="5"
+    />
+  </div>
+</div>
+
+<style>
+  .float-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .float-panel:not(.float-panel-closed) {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  :global(.dark) .float-panel {
+    background: rgba(23, 23, 23, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .color-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1.5rem;
+    background: transparent;
+    outline: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .color-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1rem;
+    width: 0.5rem;
+    border-radius: 0.125rem;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .color-slider::-webkit-slider-thumb:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+  }
+
+  .color-slider::-webkit-slider-thumb:active {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(0.95);
+  }
+
+  .color-slider::-moz-range-thumb {
+    height: 1rem;
+    width: 0.5rem;
+    border-radius: 0.125rem;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+  }
+
+  .color-slider::-moz-range-thumb:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+  }
+
+  .color-slider::-moz-range-thumb:active {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(0.95);
+  }
+
+  .btn-regular {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(244, 114, 182, 0.1);
+    color: rgb(244, 114, 182);
+    border: 1px solid rgba(244, 114, 182, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .btn-regular:hover {
+    background: rgba(244, 114, 182, 0.2);
+    transform: scale(1.05);
+  }
+
+  .btn-regular:active {
+    background: rgba(244, 114, 182, 0.3);
+    transform: scale(0.95);
+  }
+
+  :global(.dark) .btn-regular {
+    background: rgba(244, 114, 182, 0.2);
+    color: rgb(244, 114, 182);
+    border: 1px solid rgba(244, 114, 182, 0.3);
+  }
+
+  :global(.dark) .btn-regular:hover {
+    background: rgba(244, 114, 182, 0.3);
+  }
+
+  :global(.dark) .btn-regular:active {
+    background: rgba(244, 114, 182, 0.4);
+  }
+
+  .rainbow-gradient {
+    background: linear-gradient(
+      to right,
+      hsl(0, 70%, 60%),
+      hsl(60, 70%, 60%),
+      hsl(120, 70%, 60%),
+      hsl(180, 70%, 60%),
+      hsl(240, 70%, 60%),
+      hsl(300, 70%, 60%),
+      hsl(360, 70%, 60%)
+    );
+  }
+
+  :global(.dark) .rainbow-gradient {
+    background: linear-gradient(
+      to right,
+      hsl(0, 60%, 50%),
+      hsl(60, 60%, 50%),
+      hsl(120, 60%, 50%),
+      hsl(180, 60%, 50%),
+      hsl(240, 60%, 50%),
+      hsl(300, 60%, 50%),
+      hsl(360, 60%, 50%)
+    );
+  }
+</style>
+
+<script>
+  function initThemeColorPicker() {
+    const colorSlider = document.getElementById("color-slider") as HTMLInputElement;
+    const hueValue = document.getElementById("hue-value");
+    const resetBtn = document.getElementById("reset-hue-btn");
+    const panel = document.getElementById("theme-color-picker");
+
+    const DEFAULT_HUE = 330; // Pink theme default
+
+    // Get stored hue or use default
+    function getStoredHue(): number {
+      const stored = localStorage.getItem("portfolio-hue");
+      return stored ? parseInt(stored) : DEFAULT_HUE;
+    }
+
+    // Set hue to document and localStorage
+    function setHue(hue: number): void {
+      localStorage.setItem("portfolio-hue", hue.toString());
+      document.documentElement.style.setProperty("--theme-hue", hue.toString());
+      document.documentElement.style.setProperty("--theme-primary", `hsl(${hue}, 70%, 60%)`);
+      document.documentElement.style.setProperty("--theme-primary-light", `hsl(${hue}, 70%, 95%)`);
+      document.documentElement.style.setProperty("--theme-primary-dark", `hsl(${hue}, 70%, 30%)`);
+      document.documentElement.style.setProperty("--theme-primary-100", `hsl(${hue}, 70%, 95%)`);
+      document.documentElement.style.setProperty("--theme-primary-200", `hsl(${hue}, 70%, 90%)`);
+      document.documentElement.style.setProperty("--theme-primary-300", `hsl(${hue}, 70%, 80%)`);
+      document.documentElement.style.setProperty("--theme-primary-400", `hsl(${hue}, 70%, 70%)`);
+      document.documentElement.style.setProperty("--theme-primary-500", `hsl(${hue}, 70%, 60%)`);
+      document.documentElement.style.setProperty("--theme-primary-600", `hsl(${hue}, 70%, 50%)`);
+      document.documentElement.style.setProperty("--theme-primary-700", `hsl(${hue}, 70%, 40%)`);
+      document.documentElement.style.setProperty("--theme-primary-800", `hsl(${hue}, 70%, 30%)`);
+      document.documentElement.style.setProperty("--theme-primary-900", `hsl(${hue}, 70%, 20%)`);
+
+      // Update hue value display
+      if (hueValue) {
+        hueValue.textContent = hue.toString();
+      }
+    }
+
+    // Initialize with stored hue
+    const currentHue = getStoredHue();
+    if (colorSlider) {
+      colorSlider.value = currentHue.toString();
+    }
+    setHue(currentHue);
+
+    // Handle slider change
+    colorSlider?.addEventListener("input", (e) => {
+      const target = e.target as HTMLInputElement;
+      const newHue = parseInt(target.value);
+      setHue(newHue);
+    });
+
+    // Handle reset button
+    resetBtn?.addEventListener("click", () => {
+      setHue(DEFAULT_HUE);
+      if (colorSlider) {
+        colorSlider.value = DEFAULT_HUE.toString();
+      }
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (!panel?.contains(target) && !target.closest("#theme-color-switch")) {
+        panel?.classList.add("float-panel-closed");
+      }
+    });
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener("DOMContentLoaded", initThemeColorPicker);
+
+  // Re-initialize after page transitions
+  document.addEventListener("astro:after-swap", initThemeColorPicker);
+</script>

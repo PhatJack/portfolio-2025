@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import LightDarkSwitch from "../LightDarkSwitch.astro";
+import ThemeColorSwitch from "../ThemeColorSwitch.astro";
+import ThemeColorPicker from "../ThemeColorPicker.astro";
 
 const menu = [
   {
@@ -32,7 +34,7 @@ const menu = [
   class="fixed top-0 w-full z-[999] flex justify-center items-center transition-all px-2"
 >
   <div
-    class="w-full bg-white dark:bg-dark rounded-br-2xl rounded-bl-2xl px-4 max-w-[75rem] mx-auto relative z-50"
+    class="w-full bg-white dark:bg-dark shadow-md rounded-br-2xl rounded-bl-2xl px-4 max-w-[75rem] mx-auto relative z-50"
   >
     <nav id="nav" class="w-full flex justify-between items-center h-[4.5rem] relative z-50">
       <a href="/" class="flex gap-1.5 items-center btn-plain text-pink-400">
@@ -89,11 +91,12 @@ const menu = [
         }
       </ul>
       <div class="flex gap-2">
+        <ThemeColorSwitch />
         <LightDarkSwitch />
         <button
           title="toggle menu"
           id="toggle-menu"
-          class="sm:hidden flex btn-plain border-none bg-transparent justify-center items-center cursor-pointer size-12"
+          class="btn-plain sm:!hidden size-12"
           type="button"
         >
           <Icon name="fa6-solid:list-ul" class="dark:text-white text-lg" />
@@ -109,7 +112,7 @@ const menu = [
               <a
                 href={item.link}
                 target={item.target}
-                class="btn-plain text-dark dark:text-white font-bold flex items-center gap-0.5 !rounded-none"
+                class="btn-plain text-dark dark:text-white font-bold gap-0.5 rounded-none"
               >
                 <span class="inline-block pt-0.5 text-dark dark:text-white">{item.name}</span>
                 {item.name == "Github" && (
@@ -138,6 +141,7 @@ const menu = [
         }
       </ul>
     </nav>
+    <ThemeColorPicker />
   </div>
 </header>
 <style>
@@ -172,29 +176,12 @@ const menu = [
       mobileMenu?.classList.toggle("is-active");
     };
 
-    toggle?.addEventListener("click",openMobileMenu);
-
-    let lastScrollTop = 0;
-    const scrollHandler = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      if (header) {
-        if (scrollTop > lastScrollTop) {
-          header.style.transform = "translateY(-100%)";
-        } else {
-          header.style.transform = "translateY(0)";
-        }
-      }
-
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    };
-
-    window.addEventListener("scroll", scrollHandler);
+    toggle?.addEventListener("click", openMobileMenu);
 
     // Close the mobile menu before the page swaps
     document.addEventListener("astro:before-swap", () => {
       closeMobileMenu();
-      toggle?.removeEventListener("click",openMobileMenu);
-      document.removeEventListener("scroll", scrollHandler);
+      toggle?.removeEventListener("click", openMobileMenu);
     });
   }
 

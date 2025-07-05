@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button 
+    aria-label="Theme Color Settings" 
+    class="btn-plain scale-animation rounded-lg size-12 active:scale-90 transition-all relative"
+    id="theme-color-switch"
+    type="button"
+>
+    <Icon name="fa6-solid:palette" class="text-lg" />
+</button>
+
+<style>
+    .scale-animation {
+        transition: transform 0.2s ease;
+    }
+
+    .scale-animation:active {
+        transform: scale(0.9);
+    }
+</style>
+
+<script>
+    function initThemeColorSwitch() {
+        const themeColorSwitch = document.getElementById('theme-color-switch');
+        const themeColorPicker = document.getElementById('theme-color-picker');
+        
+        themeColorSwitch?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeColorPicker?.classList.toggle('float-panel-closed');
+        });
+    }
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initThemeColorSwitch);
+    
+    // Re-initialize after page transitions
+    document.addEventListener('astro:after-swap', initThemeColorSwitch);
+</script>

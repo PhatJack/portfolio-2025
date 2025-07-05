@@ -2,9 +2,11 @@
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/includes/header.astro";
 import "../styles/main.css";
+import "../styles/theme.css";
 import "../styles/scrollbar.css";
 import Sidebar from "../components/includes/sidebar.astro";
 import Footer from "../components/includes/footer.astro";
+import ThemeColorPicker from "../components/ThemeColorPicker.astro";
 import "aos/dist/aos.css";
 interface Props {
   title?: string;
@@ -47,6 +49,23 @@ const { title = "Home", description } = Astro.props;
 </html>
 
 <style is:global>
+  :root {
+    /* Default theme colors (pink theme) */
+    --theme-hue: 330;
+    --theme-primary: hsl(330, 70%, 60%);
+    --theme-primary-light: hsl(330, 70%, 95%);
+    --theme-primary-dark: hsl(330, 70%, 30%);
+    --theme-primary-100: hsl(330, 70%, 95%);
+    --theme-primary-200: hsl(330, 70%, 90%);
+    --theme-primary-300: hsl(330, 70%, 80%);
+    --theme-primary-400: hsl(330, 70%, 70%);
+    --theme-primary-500: hsl(330, 70%, 60%);
+    --theme-primary-600: hsl(330, 70%, 50%);
+    --theme-primary-700: hsl(330, 70%, 40%);
+    --theme-primary-800: hsl(330, 70%, 30%);
+    --theme-primary-900: hsl(330, 70%, 20%);
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -128,9 +147,33 @@ const { title = "Home", description } = Astro.props;
     });
   }
 
+  // Initialize theme colors
+  function initializeTheme() {
+    const DEFAULT_HUE = 330;
+    const storedHue = localStorage.getItem('portfolio-hue');
+    const hue = storedHue ? parseInt(storedHue) : DEFAULT_HUE;
+    
+    document.documentElement.style.setProperty('--theme-hue', hue.toString());
+    document.documentElement.style.setProperty('--theme-primary', `hsl(${hue}, 70%, 60%)`);
+    document.documentElement.style.setProperty('--theme-primary-light', `hsl(${hue}, 70%, 95%)`);
+    document.documentElement.style.setProperty('--theme-primary-dark', `hsl(${hue}, 70%, 30%)`);
+    document.documentElement.style.setProperty('--theme-primary-100', `hsl(${hue}, 70%, 95%)`);
+    document.documentElement.style.setProperty('--theme-primary-200', `hsl(${hue}, 70%, 90%)`);
+    document.documentElement.style.setProperty('--theme-primary-300', `hsl(${hue}, 70%, 80%)`);
+    document.documentElement.style.setProperty('--theme-primary-400', `hsl(${hue}, 70%, 70%)`);
+    document.documentElement.style.setProperty('--theme-primary-500', `hsl(${hue}, 70%, 60%)`);
+    document.documentElement.style.setProperty('--theme-primary-600', `hsl(${hue}, 70%, 50%)`);
+    document.documentElement.style.setProperty('--theme-primary-700', `hsl(${hue}, 70%, 40%)`);
+    document.documentElement.style.setProperty('--theme-primary-800', `hsl(${hue}, 70%, 30%)`);
+    document.documentElement.style.setProperty('--theme-primary-900', `hsl(${hue}, 70%, 20%)`);
+  }
+
+  initializeTheme();
   initCustomScrollbar();
+  
   document.addEventListener("astro:after-swap", () => {
     AOS.init();
+    initializeTheme();
     initCustomScrollbar();
   });
 </script>

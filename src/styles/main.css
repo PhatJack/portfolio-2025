@@ -9,9 +9,37 @@
 
 @layer components {
   .btn-plain {
-    @apply p-3 rounded-lg hover:bg-pink-100 hover:text-pink-400 transition-all active:scale-95 dark:hover:bg-pink-800 dark:hover:text-white;
+    @apply p-3 rounded-lg transition-all active:scale-95;
+    background-color: transparent !important;
+    color: inherit;
+    border: none !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  
+  .btn-plain:hover {
+    background-color: var(--theme-primary-100, #fce7f3) !important;
+    color: var(--theme-primary-600, #db2777) !important;
+  }
+  
+  .dark .btn-plain:hover {
+    background-color: var(--theme-primary-800, #be185d) !important;
+    color: white !important;
+  }
+  
+  /* Scale animation utility */
+  .scale-animation {
+    transition: transform 0.2s ease;
+  }
+  
+  .scale-animation:active {
+    transform: scale(0.9);
+  }
+  
   .highlight-text {
-    @apply text-pink-400 font-bold;
+    color: var(--theme-primary-500, #ec4899) !important;
+    font-weight: bold;
   }
 }
