@@ -16,7 +16,6 @@
   --theme-primary-900: hsl(330, 70%, 20%);
 }
 
-/* Override Tailwind's pink colors with theme colors */
 .bg-theme-100 { background-color: var(--theme-primary-100) !important; }
 .bg-theme-200 { background-color: var(--theme-primary-200) !important; }
 .bg-theme-300 { background-color: var(--theme-primary-300) !important; }
