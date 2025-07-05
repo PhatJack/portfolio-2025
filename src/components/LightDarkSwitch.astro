@@ -13,7 +13,7 @@ const { class: className = "" } = Astro.props;
   role="button"
   type="button"
   class:list={[
-    "relative btn-plain scale-animation size-12 rounded-lg border-none bg-transparent cursor-pointer dark:hover:text-dark",
+    "relative btn-plain scale-animation size-12 rounded-lg border-none cursor-pointer",
     className,
   ]}
   id="theme-switch"
@@ -22,7 +22,7 @@ const { class: className = "" } = Astro.props;
   <div class="icon-container absolute inset-0 flex items-center justify-center">
     <Icon name="fa6-regular:sun" class="theme-icon sun-icon text-lg text-dark dark:text-white" />
     <Icon name="fa6-regular:moon" class="theme-icon moon-icon text-lg text-dark dark:text-white" />
-    <Icon name="fa6-regular:star-half-stroke" class="theme-icon auto-icon text-lg text-dark dark:text-white" />
+    <Icon name="fa6-solid:circle-half-stroke" class="theme-icon auto-icon text-lg text-dark dark:text-white" />
   </div>
 </button>
 

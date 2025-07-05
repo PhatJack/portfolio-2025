@@ -3,22 +3,88 @@ import Row from "@/components/about/row.astro";
 import Layout from "@/layouts/Layout.astro";
 import { archiveData } from "../config";
 import TimeLineItem from "@/components/archive/timeLineItem.astro";
-import { fade } from "astro:transitions";
+import { fade, slide } from "astro:transitions";
 
 
 ---
 
 <Layout title="Achrive">
-  <div transition:animate={fade({duration: '0.3s'})} class="w-full h-full p-3 bg-white dark:bg-dark rounded-2xl sm:p-10 overflow-hidden">
+  <div transition:animate={fade({duration: '0.5s'})} class="w-full h-full p-3 bg-white dark:bg-dark rounded-2xl sm:p-10 overflow-hidden">
     <Row title="Archive" id="archive" href="#archive">
       <div class="w-full h-fit relative flex flex-col space-y-6 overflow-hidden">
-        <div class="absolute left-3.5 top-10 w-1 rounded-lg h-full bg-pink-300 dark:bg-pink-800"></div>
-        <div class="w-fit rounded-full py-1 px-2 bg-pink-100 dark:bg-pink-400 flex items-center gap-2 relative z-10">
-          <div class="size-4 rounded-full bg-pink-400 dark:bg-pink-800"></div>
+        <div 
+          class="absolute left-3.5 top-10 w-1 rounded-lg h-full bg-pink-300 dark:bg-pink-800 timeline-line"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+        ></div>
+        <div 
+          class="w-fit rounded-full py-1 px-2 bg-pink-100 dark:bg-pink-400 flex items-center gap-2 relative z-10 journey-badge"
+          data-aos="zoom-in"
+          data-aos-duration="600"
+          data-aos-delay="200"
+        >
+          <div class="size-4 rounded-full bg-pink-400 dark:bg-pink-800 animate-pulse"></div>
           <span class="font-semibold">My Journey</span>
         </div>
-        {archiveData.map((item, _) => <TimeLineItem {...item} />)}
+        <div class="flex flex-col gap-6">
+          {archiveData.map((item, index) => 
+            <div 
+              class="timeline-item-wrapper"
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay={100 * (index + 1)}
+              data-aos-anchor-placement="top-bottom"
+            >
+              <TimeLineItem {...item} />
+            </div>
+          )}
+        </div>
       </div>
     </Row>
   </div>
 </Layout>
+
+<style>
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes drawLine {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+</style>
