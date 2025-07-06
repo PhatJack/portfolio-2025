@@ -37,7 +37,7 @@ const menu = [
     class="w-full bg-white dark:bg-dark shadow-md rounded-br-2xl rounded-bl-2xl px-4 max-w-[75rem] mx-auto relative z-50"
   >
     <nav id="nav" class="w-full flex justify-between items-center h-[4.5rem] relative z-50">
-      <a href="/" class="flex gap-1.5 items-center btn-plain text-pink-400">
+      <a href="/" class="flex gap-1.5 items-center btn-plain text-theme-400">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -62,7 +62,7 @@ const menu = [
               <a
                 href={item.link}
                 target={item.target}
-                class="btn-plain text-dark dark:text-pink-400 font-bold flex items-center gap-0.5"
+                class="btn-plain text-dark dark:text-theme-400 font-bold flex items-center gap-0.5"
               >
                 <span class="inline-block pt-0.5">{item.name}</span>
                 {item.name == "Github" && (
@@ -166,13 +166,13 @@ const menu = [
     // Function to close the mobile menu
     const closeMobileMenu = () => {
       mobileMenu?.classList.remove("is-active");
-      toggle?.classList.remove("bg-pink-100", "text-pink-400");
+      toggle?.classList.remove("bg-theme-100", "text-theme-400");
     };
 
     const openMobileMenu = () => {
       console.log("click");
-      toggle?.classList.toggle("bg-pink-100");
-      toggle?.classList.toggle("text-pink-400");
+      toggle?.classList.toggle("bg-theme-100");
+      toggle?.classList.toggle("text-theme-400");
       mobileMenu?.classList.toggle("is-active");
     };
 

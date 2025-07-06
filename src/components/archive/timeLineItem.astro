@@ -19,16 +19,16 @@ if (image && !images[image])
 
 <div class="w-full flex flex-col gap-4 ml-2 relative z-10 overflow-hidden timeline-item">
   <div class="flex items-center animate-slideIn">
-    <span class="size-4 rounded-full bg-pink-400 border-2 border-solid border-white dark:border-dark dark:bg-pink-800 timeline-dot"></span>
-    <span class="w-6 border border-dashed border-pink-100 dark:border-pink-400 h-px timeline-connector"></span>
-    <span class="inline-block px-3 py-1 bg-pink-600 text-white rounded-full transition-all duration-300 hover:bg-pink-700 hover:scale-105 timeline-badge">
+    <span class="size-4 rounded-full bg-theme-400 border-2 border-solid border-white dark:border-dark dark:bg-theme-800 timeline-dot"></span>
+    <span class="w-6 border border-dashed border-theme-100 dark:border-theme-400 h-px timeline-connector"></span>
+    <span class="inline-block px-3 py-1 bg-theme-600 text-white rounded-full transition-all duration-300 hover:bg-theme-700 hover:scale-105 timeline-badge">
       {timePeriod}
     </span>
   </div>
   <div
-    class="w-[calc(100%-3.25rem)] sm:w-full sm:max-w-[400px] border-2 border-solid border-pink-100 dark:border-pink-400 rounded-bl-3xl rounded-tr-3xl bg-white dark:bg-dark ml-10 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg hover:shadow-pink-100 dark:hover:shadow-pink-800/20 hover:border-pink-200 dark:hover:border-pink-300 timeline-card"
+    class="w-[calc(100%-3.25rem)] sm:w-full sm:max-w-[400px] border-2 border-solid border-theme-100 dark:border-theme-400 rounded-bl-3xl rounded-tr-3xl bg-white dark:bg-dark ml-10 overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg hover:shadow-theme-100 dark:hover:shadow-theme-800/20 hover:border-theme-200 dark:hover:border-theme-300 timeline-card"
   >
-    <div class="w-full px-4 py-1 bg-pink-600 text-white dark:text-dark font-semibold border-b-2 border-pink-100 transition-all duration-300 hover:bg-pink-700 timeline-header">
+    <div class="w-full px-4 py-1 bg-theme-600 text-white dark:text-dark font-semibold border-b-2 border-theme-100 transition-all duration-300 hover:bg-theme-700 timeline-header">
       {timeLineTitle}
     </div>
     <div
@@ -50,7 +50,7 @@ if (image && !images[image])
         image && (
           <a
             href={imageLink}
-            class="size-24 sm:size-20 border rounded-full overflow-hidden inline-block cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-200 dark:hover:shadow-pink-800/50 timeline-image"
+            class="size-24 sm:size-20 border rounded-full overflow-hidden inline-block cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-theme-200 dark:hover:shadow-theme-800/50 timeline-image"
           >
             <Image src={images[image]()} alt={altText ?? "Image"} class="size-full aspect-square transition-all duration-300 hover:scale-105" />
           </a>

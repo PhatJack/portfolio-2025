@@ -32,12 +32,12 @@ if (image && !images[image])
         href={`/projects/${slug}`}
         class="w-full flex items-center gap-4 group relative cursor-pointer dark:text-gray-200"
       >
-        <span class="hidden md:inline-block absolute -left-4 h-7 w-1 rounded-md bg-pink-400"></span>
-        <span class="text-3xl font-semibold group-hover:text-pink-400 transition-all">
+        <span class="hidden md:inline-block absolute -left-4 h-7 w-1 rounded-md bg-theme-400"></span>
+        <span class="text-3xl font-semibold group-hover:text-theme-400 transition-all">
           {title}
         </span>
         <span
-          class="opacity-100 md:opacity-0 -translate-x-0 md:-translate-x-3 group-hover:opacity-100 group-hover:-translate-x-0 transition-all text-lg text-pink-400"
+          class="opacity-100 md:opacity-0 flex flex-col justify-center items-center -translate-x-0 md:-translate-x-3 group-hover:opacity-100 group-hover:-translate-x-0 transition-all text-lg text-theme-400"
         >
           <Icon name={"fa6-solid:chevron-right"} />
         </span>
@@ -45,19 +45,19 @@ if (image && !images[image])
       <div class="flex gap-4">
         <div class="flex items-center gap-2">
           <span
-            class="size-10 rounded-md bg-pink-100 dark:bg-pink-400 flex justify-center items-center"
+            class="size-10 rounded-md bg-theme-100 dark:bg-theme-400 flex justify-center items-center"
           >
-            <Icon name={"fa6-regular:clock"} class={"text-xl text-pink-400 dark:text-pink-100"} />
+            <Icon name={"fa6-regular:clock"} class={"text-xl text-theme-400 dark:text-theme-100"} />
           </span>
           <span class="text-gray-500/80 dark:text-gray-300 font-semibold text-sm">{date}</span>
         </div>
         <div class="flex items-center gap-2">
           <span
-            class="size-10 rounded-md bg-pink-100 dark:bg-pink-400 flex justify-center items-center"
+            class="size-10 rounded-md bg-theme-100 dark:bg-theme-400 flex justify-center items-center"
           >
             <Icon
               name={"fa6-solid:people-group"}
-              class={"text-xl text-pink-400 dark:text-pink-100"}
+              class={"text-xl text-theme-400 dark:text-theme-100"}
             />
           </span>
           <span class="text-gray-500/80 dark:text-gray-300 font-semibold text-sm"
@@ -71,7 +71,7 @@ if (image && !images[image])
       <div class="flex flex-wrap items-center gap-2">
         {
           tags.map((tag) => (
-            <span class="font-semibold text-sm px-2 py-1 bg-pink-100 dark:bg-pink-400 dark:text-pink-100 text-pink-400 rounded-md transition-all hover:bg-pink-200 cursor-pointer">
+            <span class="font-semibold text-sm px-2 py-1 bg-theme-100 dark:bg-theme-400 dark:text-theme-100 text-theme-400 rounded-md transition-all hover:bg-theme-200 cursor-pointer">
               {tag}
             </span>
           ))
@@ -95,9 +95,9 @@ if (image && !images[image])
       ) : (
         <a
           href={`/projects/${slug}`}
-          class="hidden absolute right-3 top-3 w-12 h-[calc(100%-1.5rem)] rounded-md bg-pink-100 dark:bg-pink-400 md:flex justify-center items-center hover:bg-pink-200 transition-all"
+          class="hidden absolute right-3 top-3 w-12 h-[calc(100%-1.5rem)] rounded-md bg-theme-100 dark:bg-theme-400 md:flex justify-center items-center hover:bg-theme-200 transition-all"
         >
-          <Icon name={"fa6-solid:chevron-right"} class="text-pink-400 dark:text-pink-100 text-lg" />
+          <Icon name={"fa6-solid:chevron-right"} class="text-theme-400 dark:text-theme-100 text-lg" />
         </a>
       )
     }
