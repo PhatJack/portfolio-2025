@@ -31,10 +31,7 @@ export const skills: skillsProps[] = [
   },
   {
     title: "Database",
-    skills: [
-      "simple-icons:mysql",
-      "simple-icons:postgresql",
-    ],
+    skills: ["simple-icons:mysql", "simple-icons:postgresql"],
   },
   {
     title: "Animation & UI Libraries",
@@ -55,14 +52,14 @@ export const skills: skillsProps[] = [
       "simple-icons:figma",
       "simple-icons:adobeillustrator",
       "simple-icons:firebase",
-			"simple-icons:vercel",
-			"simple-icons:netlify",
-			"simple-icons:docker",
-			"simple-icons:postman",
-			"simple-icons:googleanalytics",
-			"simple-icons:visualstudiocode",
-			"simple-icons:codepen",
-			"simple-icons:github",
+      "simple-icons:vercel",
+      "simple-icons:netlify",
+      "simple-icons:docker",
+      "simple-icons:postman",
+      "simple-icons:googleanalytics",
+      "simple-icons:visualstudiocode",
+      "simple-icons:codepen",
+      "simple-icons:github",
     ],
   },
 ];
@@ -187,6 +184,15 @@ interface projectDataProps {
 }
 
 export const projectData: projectDataProps[] = [
+  {
+    title: "Ztudy - Stay Focused",
+    date: "2025-04-27",
+    members: 6,
+    description:
+      "Ztudy is a collaborative study platform with video calls, chat, screen sharing, and focus tools like mic muting—perfect for solo or group learning.",
+    tags: ["React", "NextJS", "TailwindCSS", "Python", "React-query", "MySQL", "AWS"],
+    slug: "",
+  },
   {
     title: "Portfolio",
     date: "2024-01-11",
