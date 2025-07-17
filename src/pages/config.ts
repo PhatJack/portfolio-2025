@@ -191,7 +191,7 @@ export const projectData: projectDataProps[] = [
     description:
       "Ztudy is a collaborative study platform with video calls, chat, screen sharing, and focus tools like mic muting—perfect for solo or group learning.",
     tags: ["React", "NextJS", "TailwindCSS", "Python", "React-query", "MySQL", "AWS"],
-    slug: "",
+    slug: "ztudy-stay-focused",
   },
   {
     title: "Portfolio",
