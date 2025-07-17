@@ -17,7 +17,7 @@ const { title = "Home", description } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,11 +33,11 @@ const { title = "Home", description } = Astro.props;
   <body class="mx-auto bg-[#F0F8FF] dark:bg-black transition-all relative">
     <Header />
     <div id="bg-img" class="bg-hero bg-no-repeat bg-bottom bg-cover h-[600px] transition-all"></div>
-    <div class="absolute top-[40vh] sm:top-[58vh] w-full h-full px-2">
+    <div class="absolute top-[40vh] sm:top-[58vh] w-full h-full px-2 sm:px-4">
       <div class="max-w-[75rem] mx-auto pb-6">
-        <div class="w-full grid lg:grid-cols-4 gap-4 relative">
+        <div class="w-full grid grid-cols-1 lg:grid-cols-4 gap-4 relative">
           <Sidebar />
-          <div class="w-full lg:col-span-3 flex flex-col">
+          <div class="w-full lg:col-span-3 flex flex-col min-w-0">
             <slot />
             <Footer />
           </div>

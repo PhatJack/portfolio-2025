@@ -98,6 +98,79 @@
 .dark .dark\:text-theme-800 { color: var(--theme-primary-800) !important; }
 .dark .dark\:text-theme-900 { color: var(--theme-primary-900) !important; }
 
+/* Admonition colors */
+:root {
+  /* Note admonition - Blue */
+  --note-bg: #e3f2fd;
+  --note-border: #2196f3;
+  --note-title: #1976d2;
+  
+  /* Tip admonition - Green */
+  --tip-bg: #e8f5e8;
+  --tip-border: #4caf50;
+  --tip-title: #388e3c;
+  
+  /* Important admonition - Purple */
+  --important-bg: #f3e5f5;
+  --important-border: #9c27b0;
+  --important-title: #7b1fa2;
+  
+  /* Caution admonition - Orange */
+  --caution-bg: #fff8e1;
+  --caution-border: #ff9800;
+  --caution-title: #f57c00;
+  
+  /* Warning admonition - Red */
+  --warning-bg: #ffebee;
+  --warning-border: #f44336;
+  --warning-title: #d32f2f;
+  
+  /* GitHub card colors */
+  --card-bg: #f8f9fa;
+  --card-border: #e9ecef;
+  --card-bg-hover: #f1f3f4;
+  --card-border-hover: #dee2e6;
+  --card-bg-error: #fff5f5;
+  --card-border-error: #fed7d7;
+  --skeleton-bg: #e2e8f0;
+}
+
+.dark {
+  /* Note admonition - Blue */
+  --note-bg: #1a237e1a;
+  --note-border: #64b5f6;
+  --note-title: #90caf9;
+  
+  /* Tip admonition - Green */
+  --tip-bg: #1b5e201a;
+  --tip-border: #81c784;
+  --tip-title: #a5d6a7;
+  
+  /* Important admonition - Purple */
+  --important-bg: #4a148c1a;
+  --important-border: #ba68c8;
+  --important-title: #ce93d8;
+  
+  /* Caution admonition - Orange */
+  --caution-bg: #e655001a;
+  --caution-border: #ffb74d;
+  --caution-title: #ffcc02;
+  
+  /* Warning admonition - Red */
+  --warning-bg: #c626301a;
+  --warning-border: #ef5350;
+  --warning-title: #f8bbd9;
+  
+  /* GitHub card colors */
+  --card-bg: #1f2937;
+  --card-border: #374151;
+  --card-bg-hover: #2d3748;
+  --card-border-hover: #4a5568;
+  --card-bg-error: #742a2a;
+  --card-border-error: #9b2c2c;
+  --skeleton-bg: #4a5568;
+}
+
 .dark .dark\:border-theme-100 { border-color: var(--theme-primary-100) !important; }
 .dark .dark\:border-theme-200 { border-color: var(--theme-primary-200) !important; }
 .dark .dark\:border-theme-300 { border-color: var(--theme-primary-300) !important; }

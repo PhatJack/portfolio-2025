@@ -1,3 +1,5 @@
+@import './markdown-extended.css';
+
 @tailwind base;
 @tailwind components;
 
@@ -41,5 +43,96 @@
   .highlight-text {
     color: var(--theme-primary-500, #ec4899) !important;
     font-weight: bold;
+  }
+
+  /* Markdown enhancements */
+  .anchor-link {
+    @apply no-underline opacity-0 transition-opacity;
+  }
+  
+  .anchor-link:hover {
+    @apply opacity-100;
+  }
+  
+  h1:hover .anchor-link,
+  h2:hover .anchor-link,
+  h3:hover .anchor-link,
+  h4:hover .anchor-link,
+  h5:hover .anchor-link,
+  h6:hover .anchor-link {
+    @apply opacity-100;
+  }
+  
+  .external-link {
+    @apply text-theme-500 hover:text-theme-600 transition-colors;
+  }
+  
+  .external-link:after {
+    content: "↗";
+    @apply inline-block ml-1 text-xs;
+  }
+
+  /* GitHub Flavored Markdown styles */
+  .prose table {
+    @apply border-collapse border border-gray-300 dark:border-gray-600;
+  }
+  
+  .prose th,
+  .prose td {
+    @apply border border-gray-300 dark:border-gray-600 px-4 py-2;
+  }
+  
+  .prose th {
+    @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+  }
+  
+  .prose del {
+    @apply line-through text-gray-500 dark:text-gray-400;
+  }
+  
+  .prose input[type="checkbox"] {
+    @apply mr-2;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 bg-gray-50 dark:bg-gray-900 pl-4 py-2 italic;
+  }
+
+  /* Responsive improvements for mobile */
+  @media (max-width: 640px) {
+    .prose {
+      font-size: 14px;
+    }
+    
+    .prose h1 {
+      font-size: 1.5rem;
+    }
+    
+    .prose h2 {
+      font-size: 1.25rem;
+    }
+    
+    .prose h3 {
+      font-size: 1.125rem;
+    }
+    
+    .prose code {
+      font-size: 0.8rem;
+      word-break: break-word;
+    }
+    
+    .prose pre {
+      font-size: 0.75rem;
+      overflow-x: auto;
+    }
+    
+    .prose table {
+      font-size: 0.75rem;
+    }
+    
+    .prose th,
+    .prose td {
+      padding: 0.5rem;
+    }
   }
 }

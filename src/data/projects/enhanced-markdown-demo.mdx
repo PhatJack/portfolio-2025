@@ -1,0 +1,154 @@
+---
+title: "Enhanced Markdown Features Demo"
+description: "Testing the new markdown extensions including admonitions, GitHub cards, and mathematical expressions"
+tags: ["Markdown", "Documentation", "Demo"]
+date: "2025-01-01"
+members: 1
+slug: "enhanced-markdown-demo"
+---
+
+# Enhanced Markdown Features Demo
+
+This post demonstrates the new markdown extensions we've added to make the blog more beautiful and functional.
+
+## Mathematical Expressions
+
+We now support LaTeX-style mathematical expressions:
+
+Inline math: $E = mc^2$
+
+Block math:
+$$
+\frac{d}{dx}\left( \int_{0}^{x} f(u) \, du\right) = f(x)
+$$
+
+## Admonitions and Callouts
+
+### Note Admonition
+:::note
+This is a note admonition. It's perfect for highlighting important information that readers should be aware of.
+:::
+
+### Tip Admonition
+:::tip
+This is a tip admonition. Use this to share helpful tips and best practices with your readers.
+:::
+
+### Important Admonition
+:::important
+This is an important admonition. Use this for critical information that users must not miss.
+:::
+
+### Caution Admonition
+:::caution
+This is a caution admonition. Use this to warn users about potential issues or things to be careful about.
+:::
+
+### Warning Admonition
+:::warning
+This is a warning admonition. Use this for serious warnings about dangerous or destructive actions.
+:::
+
+## GitHub Repository Cards
+
+Here are some examples of GitHub repository cards:
+
+::github{repo="astro-js/astro"}
+
+::github{repo="tailwindlabs/tailwindcss"}
+
+::github{repo="microsoft/vscode"}
+
+## Enhanced Code Blocks
+
+The code blocks now have better syntax highlighting:
+
+```javascript
+// Example of enhanced JavaScript syntax highlighting
+const blogPost = {
+  title: "Enhanced Markdown Features",
+  author: "Portfolio Author",
+  tags: ["markdown", "demo"],
+  published: new Date(),
+  
+  render() {
+    return `
+      <article>
+        <h1>${this.title}</h1>
+        <p>By ${this.author}</p>
+        <div class="tags">
+          ${this.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+      </article>
+    `;
+  }
+};
+
+console.log(blogPost.render());
+```
+
+```python
+# Python example with syntax highlighting
+def fibonacci(n):
+    """Generate Fibonacci sequence up to n terms."""
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    sequence = [0, 1]
+    for i in range(2, n):
+        sequence.append(sequence[i-1] + sequence[i-2])
+    
+    return sequence
+
+# Generate first 10 Fibonacci numbers
+fib_sequence = fibonacci(10)
+print(f"First 10 Fibonacci numbers: {fib_sequence}")
+```
+
+## Regular Markdown Features
+
+All the regular markdown features still work perfectly:
+
+### Lists
+- Unordered list item 1
+- Unordered list item 2
+  - Nested item 1
+  - Nested item 2
+
+1. Ordered list item 1
+2. Ordered list item 2
+   1. Nested ordered item 1
+   2. Nested ordered item 2
+
+### Text Formatting
+- **Bold text**
+- *Italic text*
+- `Inline code`
+- ~~Strikethrough text~~
+
+### Links and Images
+- [External link](https://astro.build)
+- [Internal link](/about)
+
+### Blockquotes
+> This is a blockquote. It's useful for highlighting quotes or important passages from other sources.
+> 
+> Multiple paragraphs are supported in blockquotes.
+
+## Emoji Support
+
+We also support emoji in markdown! 🎉 ✨ 🚀
+
+:tada: :sparkles: :rocket: :computer: :coffee:
+
+## Conclusion
+
+These enhanced markdown features make the blog much more expressive and visually appealing. The admonitions help organize content better, GitHub cards showcase repositories elegantly, and mathematical expressions support technical content.
+
+:::tip
+Try using these new features in your own blog posts to make them more engaging and informative!
+:::
