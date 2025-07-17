@@ -1,0 +1,179 @@
+/* Admonitions/Callouts */
+.admonition {
+  @apply relative my-6 rounded-xl border-l-4 p-6 shadow-sm;
+  border-left-color: var(--admonitions-color-note);
+  background: var(--admonitions-bg-note);
+  color: var(--tw-prose-body);
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: var(--note-bg);
+  border-left-color: var(--note-border);
+}
+
+.admonition.bdm-note {
+  background-color: var(--note-bg);
+  border-left-color: var(--note-border);
+}
+
+.admonition.bdm-tip {
+  background-color: var(--tip-bg);
+  border-left-color: var(--tip-border);
+}
+
+.admonition.bdm-important {
+  background-color: var(--important-bg);
+  border-left-color: var(--important-border);
+}
+
+.admonition.bdm-caution {
+  background-color: var(--caution-bg);
+  border-left-color: var(--caution-border);
+}
+
+.admonition.bdm-warning {
+  background-color: var(--warning-bg);
+  border-left-color: var(--warning-border);
+}
+
+.admonition .bdm-title {
+  @apply font-semibold text-lg mb-2 block;
+  color: var(--tw-prose-headings);
+}
+
+.admonition.bdm-note .bdm-title {
+  color: var(--note-title);
+}
+
+.admonition.bdm-tip .bdm-title {
+  color: var(--tip-title);
+}
+
+.admonition.bdm-important .bdm-title {
+  color: var(--important-title);
+}
+
+.admonition.bdm-caution .bdm-title {
+  color: var(--caution-title);
+}
+
+.admonition.bdm-warning .bdm-title {
+  color: var(--warning-title);
+}
+
+.admonition > *:last-child {
+  margin-bottom: 0;
+}
+
+/* GitHub Repository Cards */
+.card-github {
+  @apply block relative my-4 px-6 py-4 rounded-xl no-underline transition-all;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--tw-prose-body);
+}
+
+.card-github:hover {
+  @apply transform -translate-y-1 shadow-lg;
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover);
+}
+
+.card-github.fetch-waiting {
+  @apply opacity-70 pointer-events-none;
+}
+
+.card-github.fetch-error {
+  @apply opacity-100 pointer-events-auto;
+  background: var(--card-bg-error);
+  border-color: var(--card-border-error);
+}
+
+.gc-titlebar {
+  @apply flex items-center justify-between mb-3;
+}
+
+.gc-titlebar-left {
+  @apply flex items-center space-x-3;
+}
+
+.gc-owner {
+  @apply flex items-center space-x-2;
+}
+
+.gc-avatar {
+  @apply w-6 h-6 rounded-full bg-gray-300;
+  background-size: cover;
+  background-position: center;
+}
+
+.gc-user {
+  @apply text-sm font-medium;
+  color: var(--tw-prose-headings);
+}
+
+.gc-divider {
+  @apply text-gray-400;
+}
+
+.gc-repo {
+  @apply text-lg font-semibold;
+  color: var(--theme-primary);
+}
+
+.gc-description {
+  @apply text-sm mb-3;
+  color: var(--tw-prose-body);
+}
+
+.gc-infobar {
+  @apply flex items-center space-x-4 text-sm;
+}
+
+.gc-stars,
+.gc-forks,
+.gc-license,
+.gc-language {
+  @apply flex items-center space-x-1;
+  color: var(--tw-prose-body);
+}
+
+.gc-stars::before {
+  content: "⭐";
+}
+
+.gc-forks::before {
+  content: "🍴";
+}
+
+.gc-license::before {
+  content: "📄";
+}
+
+.gc-language::before {
+  content: "🔵";
+}
+
+.github-logo {
+  @apply w-5 h-5 opacity-60;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Loading animation for GitHub cards */
+.card-github.fetch-waiting .gc-description,
+.card-github.fetch-waiting .gc-infobar,
+.card-github.fetch-waiting .gc-avatar {
+  @apply animate-pulse;
+  background-color: var(--skeleton-bg);
+  color: transparent;
+}
+
+.card-github.fetch-waiting .gc-description,
+.card-github.fetch-waiting .gc-infobar {
+  @apply rounded;
+}
