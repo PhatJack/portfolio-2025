@@ -1,9 +1,20 @@
+import onemedicImage from "../assets/company/onemedic.png";
+import lagtuzImage from "../assets/company/lagtuz.jpg";
+import sguLogoImage from "../assets/sguLogo.png";
+
 interface skillsProps {
   title: string;
   skills: string[];
 }
 
-export const skills: skillsProps[] = [
+type SkillCategory = "Programming Languages" | "Frameworks" | "Database" | "UI" | "Tools";
+
+type SkillGroup = {
+  title: SkillCategory;
+  skills: string[];
+};
+
+export const skills: SkillGroup[] = [
   {
     title: "Programming Languages",
     skills: [
@@ -11,12 +22,10 @@ export const skills: skillsProps[] = [
       "simple-icons:css3",
       "simple-icons:javascript",
       "simple-icons:typescript",
-      "simple-icons:php",
-      "simple-icons:cplusplus",
     ],
   },
   {
-    title: "Frameworks/Libraries",
+    title: "Frameworks",
     skills: [
       "simple-icons:react",
       "simple-icons:nextdotjs",
@@ -34,7 +43,7 @@ export const skills: skillsProps[] = [
     skills: ["simple-icons:mysql", "simple-icons:postgresql"],
   },
   {
-    title: "Animation & UI Libraries",
+    title: "UI",
     skills: [
       "simple-icons:framer",
       "simple-icons:mui",
@@ -46,19 +55,12 @@ export const skills: skillsProps[] = [
     ],
   },
   {
-    title: "Others",
+    title: "Tools",
     skills: [
       "simple-icons:git",
       "simple-icons:figma",
-      "simple-icons:adobeillustrator",
-      "simple-icons:firebase",
-      "simple-icons:vercel",
-      "simple-icons:netlify",
       "simple-icons:docker",
       "simple-icons:postman",
-      "simple-icons:googleanalytics",
-      "simple-icons:visualstudiocode",
-      "simple-icons:codepen",
       "simple-icons:github",
     ],
   },
@@ -92,28 +94,33 @@ interface archiveDataProps {
 
 export const archiveData: archiveDataProps[] = [
   {
-    timeLineTitle: "Intern Front-end Developer",
-    timePeriod: "March 2025 - Present",
+    timeLineTitle: "Full-stack Developer",
+    timePeriod: "March 2025 - April 2026",
     listDocs: [
       {
         title: "Company",
-        content: "One Medic",
+        content: "One Medic JSC",
       },
       {
         title: "Position",
-        content: "Frontend Developer",
+        content: "Full-stack Developer",
       },
       {
         title: "Location",
-        content: "Onsite",
+        content: "Ho Chi Minh City",
+      },
+      {
+        title: "Highlights",
+        content:
+          "Built UI from Figma with React and CoreUI, synced data with React Query, handled client-side CRUD against PostgreSQL-backed APIs, improved core features and performance, and refined components from design feedback.",
       },
     ],
-    image: "/src/assets/company/onemedic.png",
+    image: onemedicImage.src,
     imageLink: "https://onemedic.vn/vi",
   },
   {
-    timeLineTitle: "Intern Front-end Developer",
-    timePeriod: "Dec 2024 - February 2025",
+    timeLineTitle: "Front-end Developer",
+    timePeriod: "August 2024 - February 2025",
     listDocs: [
       {
         title: "Company",
@@ -121,31 +128,37 @@ export const archiveData: archiveDataProps[] = [
       },
       {
         title: "Position",
-        content: "Frontend Developer",
+        content: "Front-end Developer",
       },
       {
         title: "Location",
-        content: "Hybrid",
+        content: "Ho Chi Minh City",
+      },
+      {
+        title: "Highlights",
+        content:
+          "Worked with designers to improve user experience, implemented responsive enhancements, and maintained front-end functionality for websites.",
       },
     ],
-    image: "/src/assets/company/lagtuz.jpg",
+    image: lagtuzImage.src,
     imageLink: "https://lagtuz.vn/",
   },
   {
-    timeLineTitle: "Freelancer",
-    timePeriod: "2024 - Present",
+    timeLineTitle: "Front-end Developer",
+    timePeriod: "July 2024 - July 2025",
     listDocs: [
       {
-        title: "Position",
-        content: "Frontend Developer",
+        title: "Company",
+        content: "Freelancer",
       },
       {
         title: "Location",
-        content: "Remote",
+        content: "Ho Chi Minh City",
       },
       {
-        title: "Current Project",
-        content: "Working on a client's gaming website",
+        title: "Highlights",
+        content:
+          "Delivered front-end work for client projects and iterated on UI details as needed.",
       },
     ],
   },
@@ -166,7 +179,7 @@ export const archiveData: archiveDataProps[] = [
         content: "Bachelor",
       },
     ],
-    image: "/src/assets/sguLogo.png",
+    image: sguLogoImage.src,
     altText: "Sai Gon University",
     imageLink: "https://www.sgu.edu.vn/",
   },
