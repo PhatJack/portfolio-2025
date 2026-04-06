@@ -3,28 +3,46 @@ import { skills } from "../config";
 import Layout from "@/layouts/Layout.astro";
 import Row from "@/components/about/row.astro";
 import IconBadge from "@/components/IconBadge.astro";
-import { fade } from "astro:transitions";
 ---
 
 <Layout title="About">
   <div class="w-full h-full rounded-2xl bg-white dark:bg-dark p-3 sm:p-10 flex flex-col gap-6">
     <Row title="About" id="about" href="#about">
-      <p class="text-gray-600 dark:text-gray-400 text-pretty leading-[1.75] text-lg">
-        I'm a front-end developer with 6 months of experience. I'm passionate about building
-        beautiful and user-friendly websites. I'm also a self-taught developer who loves to learn
-        new things.My short-term objective is to become a software engineer within the next three
-        years, and my long-term goal is to become an expert project manager.
-      </p>
+      <div class="about-content grid md:grid-cols-[1fr_auto] gap-8 items-start">
+        <div class="flex flex-col gap-5">
+          <p class="text-dark/80 dark:text-white/80 text-pretty leading-[1.8] text-base sm:text-lg">
+            I'm a <span class="font-semibold text-theme-600 dark:text-theme-300">Software Engineer</span> with 1.5 years of experience crafting clean, user-friendly digital experiences. I'm passionate about building performant websites and continuously expanding my technical skills.
+          </p>
+          <p class="text-dark/70 dark:text-white/70 text-pretty leading-[1.8] text-base sm:text-lg">
+            Mostly self-taught and always exploring emerging technologies, I thrive in collaborative environments where I can contribute to meaningful projects. My goal is to evolve into a strong full-stack engineer and eventually transition into a project management role.
+          </p>
+          <div class="flex gap-3 pt-2">
+            <div class="flex items-center gap-2 px-3 py-2 rounded-full bg-theme-100 dark:bg-theme-800">
+              <span class="text-xs font-semibold uppercase tracking-wider text-theme-600 dark:text-theme-300">Status</span>
+              <span class="text-xs font-bold text-theme-700 dark:text-theme-200">Active</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-full bg-theme-100 dark:bg-theme-800">
+              <span class="text-xs font-semibold uppercase tracking-wider text-theme-600 dark:text-theme-300">Experience</span>
+              <span class="text-xs font-bold text-theme-700 dark:text-theme-200">1.5y</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </Row>
     <Row title="Skills" id="skills" href="#skills">
-      <div class="pl-2 flex flex-col space-y-6">
+      <div class="skills-grid flex flex-col gap-8">
         {
           skills.map((skill, _) => (
-            <div class="flex flex-col space-y-4">
-              <h2 class="text-lg text-gray-600 dark:text-gray-400">{skill.title}</h2>
-              <div class="flex flex-wrap gap-2">
+            <div class="skill-category flex flex-col gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-1.5 h-6 rounded bg-theme-600 dark:bg-theme-400"></div>
+                <h2 class="text-lg font-semibold text-dark dark:text-white">{skill.title}</h2>
+              </div>
+              <div class="skill-badges flex flex-wrap gap-3">
                 {skill.skills.map((item, _) => (
-                  <IconBadge item={item} toolTipText={item.split(":")[1]} />
+                  <div class="skill-badge-wrapper">
+                    <IconBadge item={item} toolTipText={item.split(":")[1]} />
+                  </div>
                 ))}
               </div>
             </div>
@@ -33,11 +51,71 @@ import { fade } from "astro:transitions";
       </div>
     </Row>
     <Row title="Hobbies" id="hobbies" href="#hobbies">
-      <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 text-pretty leading-relaxed text-lg">
-				<li>Playing game</li>
-				<li>Listening to music</li>
-				<li>Learning new things</li>
-			</ul>
+      <div class="hobbies-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {['Playing games', 'Listening to music', 'Learning new things', 'Traveling', 'Reading', 'Watching movies'].map((hobby) => (
+          <div class="hobby-item group relative overflow-hidden rounded-2xl border border-theme-200 bg-theme-50/50 p-4 transition-all duration-300 hover:border-theme-400 hover:bg-theme-100 hover:-translate-y-1 dark:border-theme-800 dark:bg-theme-900/30 dark:hover:border-theme-600 dark:hover:bg-theme-800">
+            <div class="absolute inset-0 bg-gradient-to-br from-theme-100/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-theme-400/10"></div>
+            <h4 class="relative font-semibold text-dark dark:text-white transition-all duration-300 group-hover:text-theme-600 dark:group-hover:text-theme-300">{hobby}</h4>
+          </div>
+        ))}
+      </div>
     </Row>
   </div>
 </Layout>
+
+<style>
+  .about-content {
+    animation: fadeInUp 600ms ease-out both;
+  }
+
+  .skills-grid {
+    animation: fadeInUp 600ms ease-out both;
+    animation-delay: 100ms;
+  }
+
+  .skill-category {
+    animation: fadeInUp 600ms ease-out both;
+  }
+
+  .skill-badge-wrapper {
+    animation: fadeInScale 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hobbies-grid {
+    animation: fadeInUp 600ms ease-out both;
+    animation-delay: 200ms;
+  }
+
+  .hobby-item {
+    animation: fadeInScale 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hobby-item:nth-child(1) { animation-delay: 0ms; }
+  .hobby-item:nth-child(2) { animation-delay: 80ms; }
+  .hobby-item:nth-child(3) { animation-delay: 160ms; }
+  .hobby-item:nth-child(4) { animation-delay: 240ms; }
+  .hobby-item:nth-child(5) { animation-delay: 320ms; }
+  .hobby-item:nth-child(6) { animation-delay: 400ms; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>
