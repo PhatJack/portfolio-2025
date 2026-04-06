@@ -19,7 +19,7 @@ export function GithubCardComponent(properties, children) {
 		return h(
 			"div",
 			{ class: "hidden" },
-			'Invalid repository. ("repo" attributte must be in the format "owner/repo")',
+			'Invalid repository. ("repo" attribute must be in the format "owner/repo")',
 		);
 
 	const repo = properties.repo;
